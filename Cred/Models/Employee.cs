@@ -26,7 +26,7 @@ namespace Cred.Models
 
         [Display(Name = "Place of Birth")]
         public string PlaceOfBirth { get; set; } = string.Empty;
-
+        public string PlaceOfBirth2 { get; set; } = string.Empty;
         // Navigation property for previous employments
         public virtual ICollection<PreviousEmployment> PreviousEmployments { get; set; } = new List<PreviousEmployment>();
     }
