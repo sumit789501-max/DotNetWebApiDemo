@@ -1,0 +1,46 @@
+﻿@model Cred.Models.Employee
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<div class="container mt-4">
+    <h2>Edit Employee</h2>
+
+    <form method="post" action="/Employees/Edit/@Model.Id">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="EmployeeNo" class="form-label">Employee No</label>
+                    <input name="EmployeeNo" id="EmployeeNo" class="form-control" value="@Model.EmployeeNo" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name</label>
+                    <input name="Name" id="Name" class="form-control" value="@Model.Name" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="DOB" class="form-label">Date of Birth</label>
+                    <input name="DOB" id="DOB" type="date" class="form-control" value="@Model.DOB.ToString("yyyy-MM-dd")" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Address" class="form-label">Address</label>
+                    <input name="Address" id="Address" class="form-control" value="@Model.Address" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="PlaceOfBirth" class="form-label">Place of Birth</label>
+                    <input name="PlaceOfBirth" id="PlaceOfBirth" class="form-control" value="@Model.PlaceOfBirth" />
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success me-2">Update</button>
+                    <a href="/Employees" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

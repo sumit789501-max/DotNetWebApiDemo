@@ -1,0 +1,44 @@
+﻿@model Cred.Models.Employee
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+
+
+
+
+<div class="container mt-4">
+    <h2>Create Employee</h2>
+    
+    <form method="post" action="/Employees/Create">
+        <div class="mb-3">
+            <label for="EmployeeNo">Employee Number</label>
+            <input name="EmployeeNo" class="form-control" required />
+        </div>
+        
+        <div class="mb-3">
+            <label for="Name">Full Name</label>
+            <input name="Name" class="form-control" required />
+        </div>
+        
+        <div class="mb-3">
+            <label for="DOB">Date of Birth</label>
+            <input name="DOB" type="date" class="form-control" required />
+        </div>
+        
+        <div class="mb-3">
+            <label for="Address">Address</label>
+            <textarea name="Address" class="form-control" rows="3"></textarea>
+        </div>
+        
+        <div class="mb-3">
+            <label for="PlaceOfBirth">Place of Birth</label>
+            <input name="PlaceOfBirth" class="form-control" />
+        </div>
+        
+        <button type="submit" class="btn btn-success">Save Employee</button>
+        <a href="/Employees" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>
+
+

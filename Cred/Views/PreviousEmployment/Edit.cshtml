@@ -1,0 +1,51 @@
+﻿@model Cred.Models.PreviousEmployment
+@{
+    ViewData["Title"] = "Edit Employment";
+}
+
+<div class="container mt-4">
+    <h2>Edit Employment Record</h2>
+
+    <form method="post" action="/PreviousEmployment/Edit/@Model.Id">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="EmployeeId" class="form-label">Employee</label>
+                    <select name="EmployeeId" id="EmployeeId" class="form-select" required>
+                        @foreach (var emp in ViewBag.Employees as SelectList)
+                        {
+                            <option value="@emp.Value" @(emp.Selected ? "selected" : "")>@emp.Text</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="CompanyName" class="form-label">Company Name</label>
+                    <input name="CompanyName" id="CompanyName" class="form-control" value="@Model.CompanyName" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="JobTitle" class="form-label">Job Title</label>
+                    <input name="JobTitle" id="JobTitle" class="form-control" value="@Model.JobTitle" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="FromDate" class="form-label">From Date</label>
+                    <input name="FromDate" id="FromDate" type="date" class="form-control" value="@Model.FromDate.ToString("yyyy-MM-dd")" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="ToDate" class="form-label">To Date</label>
+                    <input name="ToDate" id="ToDate" type="date" class="form-control" value="@(Model.ToDate?.ToString("yyyy-MM-dd"))" />
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success me-2">Update</button>
+                    <a href="/PreviousEmployment" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

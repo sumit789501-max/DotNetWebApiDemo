@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Cred.Models.Employee>
+@{
+    ViewData["Title"] = "Employee Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <h2>Employee Management</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+    }
+
+    <!-- Employee Form -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <form method="post" action="/Employees/Create">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="Name" class="form-label">Name</label>
+                        <input name="Name" id="Name" class="form-control" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="DOB" class="form-label">Date of Birth</label>
+                        <input name="DOB" id="DOB" type="date" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="Address" class="form-label">Address</label>
+                        <input name="Address" id="Address" class="form-control" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="PlaceOfBirth" class="form-label">Place of Birth</label>
+                        <input name="PlaceOfBirth" id="PlaceOfBirth" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="EmployeeNo" class="form-label">Employee No</label>
+                    <input name="EmployeeNo" id="EmployeeNo" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success me-2">Save</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Employee List -->
+    <h3>Employee List</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Employee No</th>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Address</th>
+                    <th>Place of Birth</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                                <tr>
+                                    <td>@item.EmployeeNo</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.DOB.ToString("M/d/yyyy")</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.PlaceOfBirth</td>
+                                    <td>
+                                        <a href="/Employees/Edit/@item.Id" class="btn btn-sm btn-primary me-1">Edit</a>
+                                        <a href="/Employees/Delete/@item.Id" class="btn btn-sm btn-danger me-1">Delete</a>
+                                        <a href="/PreviousEmployment" class="btn btn-sm btn-info">Employment</a>
+                                    </td>
+                                </tr>
+                    }
+                }
+                else
+                {
+                        <tr>
+                            <td colspan="6" class="text-center">No employees found.</td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-3">
+        <a href="/PreviousEmployment" class="btn btn-primary">Manage Previous Employment</a>
+    </div>
+</div>
+
+<script>
+function resetForm() {
+    document.getElementById('Name').value = '';
+    document.getElementById('DOB').value = '';
+    document.getElementById('Address').value = '';
+    document.getElementById('PlaceOfBirth').value = '';
+    document.getElementById('EmployeeNo').value = '';
+}
+</script>

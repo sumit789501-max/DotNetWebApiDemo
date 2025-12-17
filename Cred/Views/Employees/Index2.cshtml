@@ -1,0 +1,40 @@
+﻿@model Cred.Models.Employee
+@{
+    ViewData["Title"] = "Employee Management";
+}
+
+<div class="container mt-4">
+    <h2>Employee Management</h2>
+
+    <form asp-action="Create" class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="DOB" class="form-label">Date of Birth</label>
+            <input asp-for="DOB" type="date" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Address" class="form-label"></label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="PlaceOfBirth" class="form-label">Place of Birth</label>
+            <input asp-for="PlaceOfBirth" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="EmployeeNo" class="form-label">Employee No</label>
+            <input asp-for="EmployeeNo" class="form-control" />
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Reset</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+﻿@model Cred.Models.Employee
+
+<div class="container mt-4">
+    <h2>Edit Employee</h2>
+
+    <form asp-action="Edit" method="post" class="mt-3">
+        <input type="hidden" asp-for="Id" />
+        <!-- same form fields as Create -->
+        <div class="mb-3">
+            <label asp-for="EmployeeNo" class="form-label"></label>
+            <input asp-for="EmployeeNo" class="form-control" />
+            <span asp-validation-for="EmployeeNo" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DOB" class="form-label"></label>
+            <input asp-for="DOB" type="date" class="form-control" />
+            <span asp-validation-for="DOB" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label"></label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PlaceOfBirth" class="form-label"></label>
+            <input asp-for="PlaceOfBirth" class="form-control" />
+            <span asp-validation-for="PlaceOfBirth" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </form>
+</div>
